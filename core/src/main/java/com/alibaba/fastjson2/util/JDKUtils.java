@@ -84,8 +84,10 @@ public class JDKUtils {
             unsafe = (Unsafe) theUnsafeField.get(null);
             offset = unsafe.arrayBaseOffset(byte[].class);
             charOffset = unsafe.arrayBaseOffset(char[].class);
+            System.out.println("init unsafe success...");
         } catch (Throwable e) {
             throw new JSONException("init unsafe error");
+            System.out.println("init unsafe error...");
         }
 
         UNSAFE = unsafe;
@@ -94,6 +96,7 @@ public class JDKUtils {
 
         if (offset == -1) {
             throw new JSONException("init JDKUtils error", initErrorLast);
+            System.out.println("init JDKUtils error...");
         }
 
         int jvmVersion = -1, android_sdk_int = -1;
